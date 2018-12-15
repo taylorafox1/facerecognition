@@ -6,6 +6,10 @@ import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
 import './App.css';
 
+const app = new Clarifai.App({
+  apiKey: 'YOUR_API_KEY'
+})
+
 const particlesOptions = {
   particles: {
       number: {
@@ -33,6 +37,17 @@ class App extends Component {
 
   onButtonSubmit = () => {
     console.log('click');
+    app.models
+.predict(
+Clarifai.COLOR_MODEL,
+ // URL
+ "https://samples.clarifai.com/metro-north.jpg"
+)
+.then(function(response) {
+ // do something with responseconsole.log(response);
+ },
+ function(err) {// there was an error}
+);
   }
 
   render() {
